@@ -1,7 +1,7 @@
 console.log('Hello!');
 import debounce from "/interview-qusetions/debounce.js"
 import throttle from "/interview-qusetions/throttle.js"
-import "/interview-qusetions/polyfill.js"
+import "/interview-qusetions/function.polyfill.js"
 // debounce example 
 const searchInput=document.getElementById("searchInput");
 const searchOutput=document.getElementById("searchOutput");
