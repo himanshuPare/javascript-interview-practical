@@ -1,7 +1,7 @@
 console.log('Hello!');
 import debounce from "/interview-qusetions/debounce.js"
 import throttle from "/interview-qusetions/throttle.js"
-import "/interview-qusetions/function.polyfill.js"
+import "/interview-qusetions/Array.polyfills.js"
 // debounce example 
 const searchInput=document.getElementById("searchInput");
 const searchOutput=document.getElementById("searchOutput");
@@ -28,11 +28,12 @@ const clickFn=throttle(()=>{
 
 btnThrottle.addEventListener('click',clickFn);
 
+// Array Polyfill 
+//fiter
 
-function add (c){
-    return this.a+this.b+c;
-}
+const arr=[1,2,3,4,5,6,7,8,9,10,11,22,34,56,78,89,14,23];
+const result =arr.myFilter((item)=>{
+   return item%2;
+})
 
-console.log("myApply",add.myApply({a:10,b:25},[25]));
-console.log("myCall",add.myCall({a:10,b:25},35));
-console.log("myBind",add.myBind({a:10,b:25},15)());
+console.log("myFilter result",result);
