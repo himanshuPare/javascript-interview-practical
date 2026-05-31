@@ -1,4 +1,4 @@
-Promise.prototype.myAll=function (promises=[]){
+Promise.myAll=function (promises=[]){
    return new Promise((resolve,reject)=>{
     const result=[];
     let completed=0;
@@ -10,7 +10,7 @@ Promise.prototype.myAll=function (promises=[]){
      Promise.resolve(promise).then((val)=>{
        result[i]=val;
        completed++;
-       if(completed === promise.length){
+       if(completed === promises.length){
          resolve(result);
         }
      })
@@ -18,7 +18,7 @@ Promise.prototype.myAll=function (promises=[]){
    })
 }
 
-Promise.prototype.myRace=function(promises=[]){
+Promise.myRace=function(promises=[]){
   return new Promise((resolve,reject)=>{
      promises.forEach((promise)=>{
         Promise.resolve(promise).then(resolve,reject);
@@ -26,7 +26,7 @@ Promise.prototype.myRace=function(promises=[]){
   })
 }
 
-Promise.prototype.myAny=function(promises=[]){
+Promise.myAny=function(promises=[]){
     return new Promise((resolve,reject)=>{
       const error=[];
       let rejectCount=0;
@@ -41,7 +41,7 @@ Promise.prototype.myAny=function(promises=[]){
         },(err)=>{
         error[i]=err;
         rejectCount++;
-        if(rejectCount === promise.length){
+        if(rejectCount === promises.length){
             reject(new AggregateError(error,"All promise rejected"))
         }
         })
