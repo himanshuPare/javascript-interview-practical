@@ -3,6 +3,7 @@ import debounce from "/interview-qusetions/debounce.js"
 import throttle from "/interview-qusetions/throttle.js"
 import "/interview-qusetions/Array.polyfills.js"
 import "/interview-qusetions/promise.polyfill.js"
+import Curry from "/interview-qusetions/Currying.polyfill.js"
 // debounce example 
 const searchInput=document.getElementById("searchInput");
 const searchOutput=document.getElementById("searchOutput");
@@ -69,3 +70,15 @@ Promise.myRace([p3,p1]).then((data)=>{
     Promise.myAny([p3]).then((data)=>{
       console.log("myAny",data);
       },console.error);
+
+      //Curry ----------------------
+
+      function sum(a, b, c) {
+        return a + b + c;
+      }
+      
+      const curriedSum = Curry(sum);
+      
+      console.log(curriedSum(1)(2)(3));
+      console.log(curriedSum(1, 2)(3));
+      console.log(curriedSum(1)(2, 3));
